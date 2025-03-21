@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "api_tienda"
+version = "0.1.0"
+description = "API para el caso de una tienda"
+authors = ["Manuel Alén <manuelalen@protonmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+fastapi = "^0.109.0"
+uvicorn = "^0.29.0"
+sqlalchemy = "^2.0.27"
+pymysql = "^1.1.0"
+python-dotenv = "^1.0.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
