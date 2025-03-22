@@ -23,3 +23,9 @@ build/
 # Ignorar archivos de control de dependencias de pip
 pip-log.txt
 pip-delete-this-directory.txt
+
+# Ignorar checkpoints de Jupyter
+.ipynb_checkpoints/
+
+# Ignorar carpeta spark del entorno local
+spark/
