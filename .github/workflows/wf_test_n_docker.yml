@@ -8,6 +8,7 @@ on:
 
 jobs:
   test-poetry:
+    name: ✨ Instalar y comprobar dependencias con Poetry
     runs-on: ubuntu-latest
 
     steps:
@@ -30,7 +31,7 @@ jobs:
       working-directory: ./api_tienda
       run: poetry install
 
-    - name: Comprobar sintaxis de Python
+    - name: ✅ Comprobación de sintaxis
       working-directory: ./api_tienda
       run: |
         for file in *.py; do
