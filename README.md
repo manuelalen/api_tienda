@@ -24,10 +24,6 @@ Si usas `poetry`:
 ```bash
 poetry install
 ```
-Si usas `pip`:
-```bash
-pip install -r requirements.txt
-```
 
 ### 3️⃣ Configura las variables de entorno  
 Crea un archivo `.env` en la raíz del proyecto:
@@ -101,6 +97,14 @@ SHOW TABLES;
 - **dotenv** → Gestión de variables de entorno  
 
 ---
+
+
+---
+
+### 📕 **FASE 2**
+
+
+Creacion de las aplicaciones en `Python` de `app_caja.py` y `app_clientes.py`. Así podrás realizar tus simulaciones de compras con `app_caja.py` y tus registros de clientes con `app_clientes.py`
 
 ## 📜 Licencia  
 Este proyecto es de código abierto y puedes modificarlo según tus necesidades.  
