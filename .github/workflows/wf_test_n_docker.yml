@@ -2,37 +2,55 @@ name: CI con Poetry y Docker
 
 on:
   push:
-    branches: [ main ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ main ]
+    branches: [ "main" ]
 
 jobs:
   test-poetry:
-    name: ✨ Instalar y comprobar dependencias con Poetry
     runs-on: ubuntu-latest
 
     steps:
-      - name: 📆 Checkout del repo
-        uses: actions/checkout@v3
+    - name: Checkout del código
+      uses: actions/checkout@v3
 
-      - name: 🖊️ Instalar Poetry
-        uses: abatilo/actions-poetry@v2
+    - name: Crear carpeta api_tienda y mover archivos
+      run: |
+        mkdir api_tienda
+        shopt -s extglob
+        mv !(api_tienda|.git|.github) api_tienda/
 
-      - name: ⚖️ Instalar dependencias
-        run: poetry install
+    - name: Instalar Poetry
+      run: curl -sSL https://install.python-poetry.org | python3 -
 
-      - name: ✅ Comprobación de sintaxis
-        run: |
-          poetry run python -m py_compile app_clientes.py app_caja.py main.py leer_delta_table.py
+    - name: Añadir Poetry al PATH
+      run: echo "${HOME}/.local/bin" >> $GITHUB_PATH
+
+    - name: Instalar dependencias
+      working-directory: ./api_tienda
+      run: poetry install
+
+    - name: Comprobar sintaxis de Python
+      working-directory: ./api_tienda
+      run: |
+        for file in *.py; do
+          python -m py_compile "$file"
+        done
 
   build-docker:
-    name: 🚧 Build de Docker si pasa Poetry
-    runs-on: ubuntu-latest
     needs: test-poetry
+    runs-on: ubuntu-latest
 
     steps:
-      - name: 📆 Checkout del repo
-        uses: actions/checkout@v3
+    - name: Checkout del código
+      uses: actions/checkout@v3
 
-      - name: 📄 Construir imagen Docker
-        run: docker build -t tienda_api .
+    - name: Crear carpeta api_tienda y mover archivos
+      run: |
+        mkdir api_tienda
+        shopt -s extglob
+        mv !(api_tienda|.git|.github) api_tienda/
+
+    - name: Build de Docker
+      working-directory: ./api_tienda
+      run: docker build -t mi-api:latest .
