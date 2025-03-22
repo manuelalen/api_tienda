@@ -104,7 +104,15 @@ SHOW TABLES;
 ### 📕 **FASE 2**
 
 
-Creacion de las aplicaciones en `Python` de `app_caja.py` y `app_clientes.py`. Así podrás realizar tus simulaciones de compras con `app_caja.py` y tus registros de clientes con `app_clientes.py`
+Creacion de las aplicaciones en `Python` de `app_caja.py` y `app_clientes.py`. Así podrás realizar tus simulaciones de compras con `app_caja.py` y tus registros de clientes con `app_clientes.py`.
+
+Para las predicciones, necesitarás:
+
+```bash
+pip install scikit-learn pandas matplotlib seaborn
+```
+
+Esta parte aún no ha sido añadida al `pyproject.toml`, por lo que tendrás que copiar este `pip` e instalarlo de esta forma. En una próxima versión se subirá junto a los tests.
 
 ## 📜 Licencia  
 Este proyecto es de código abierto y puedes modificarlo según tus necesidades.  
