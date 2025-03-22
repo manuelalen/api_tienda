@@ -37,6 +37,8 @@ jobs:
         for file in *.py; do
           python -m py_compile "$file"
         done
+    - name: ✅ Validar todas las dependencias con test de imports
+      run: poetry run python tests/test_imports.py
 
   build-docker:
     needs: test-poetry
