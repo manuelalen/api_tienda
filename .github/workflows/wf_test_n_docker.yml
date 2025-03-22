@@ -35,9 +35,11 @@ jobs:
       working-directory: ./api_tienda
       run: |
         for file in *.py; do
-          python -m py_compile "$file"
+          poetry run python -m py_compile "$file"
         done
+
     - name: ✅ Validar todas las dependencias con test de imports
+      working-directory: ./api_tienda
       run: poetry run python tests/test_imports.py
 
   build-docker:
